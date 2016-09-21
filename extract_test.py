@@ -1,11 +1,8 @@
 
 import MeCab
-import collections
-import json
-import urllib
-
-
 mecab = MeCab.Tagger('mecabrc')
+#UnicodeDecodeError回避a)
+mecab.parse('')
 
 def tokenize(text):
     #mecab.parse('')#文字列がGCされるのを防ぐ
@@ -13,6 +10,7 @@ def tokenize(text):
     words = {}
     #words = collections.OrderedDict()
     i = 0
+    node = node.next
     while node:
         #単語を取得
         word = node.surface
@@ -23,11 +21,9 @@ def tokenize(text):
         #次の単語に進める
         node = node.next
         i += 1
+    #リスト末尾の'BOS/EOS'を削除
+    del words[i-1]
     return words
-
-#text = input()
-
-
 
 if __name__ == '__main__':
     sentence = "本堂と境内にいる「夫婦カツラ」が盛岡市の文化財として指定されている寺はどこですか。"
