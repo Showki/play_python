@@ -18,7 +18,6 @@ class AnalyzeMorpheme:
             pos = node.feature.split(",")[0] #品詞だけ切取り
             if pos == '名詞':
                 while node:
-                    #import pdb; pdb.set_trace() 
                     next_pos = node.next.feature.split(",")[0]
                     if next_pos == '名詞':
                         next_word = node.next.surface
