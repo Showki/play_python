@@ -39,7 +39,12 @@ if __name__ == '__main__':
     # import pdb; pdb.set_trace()
     sentence = "本堂と境内にいる「夫婦カツラ」が盛岡市の文化財として指定されている寺はどこですか。"
     answer = "援交寺"
+    
     morpheme = AnalyzeMorpheme(sentence)
     result_sentence = morpheme.getTokenizedWords() #()を外すと<bound method〜
+    
+    morpheme = AnalyzeMorpheme(answer)
+    result_answer = morpheme.getTokenizedWords() #()を外すと<bound method〜
+    
     result_answer = morpheme.getTokenizedWords()
     print(result_sentence,result_answer)
